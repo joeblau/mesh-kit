@@ -11,6 +11,7 @@ import MultipeerConnectivity
 internal class MeshSessionDelegate: NSObject, MCSessionDelegate {
 
     private let delegate: MeshNetworkDelegate
+
     init(meshNetwork delegate: MeshNetworkDelegate) {
         self.delegate = delegate
     }
