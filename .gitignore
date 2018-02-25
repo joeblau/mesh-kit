@@ -67,5 +67,6 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
+cobertura.xml
 
 # End of https://www.gitignore.io/api/swift,carthage

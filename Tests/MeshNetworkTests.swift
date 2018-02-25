@@ -94,13 +94,6 @@ class MeshNetworkTests: XCTestCase {
             expectedMessageCount: messageCount(for: devices))
     }
 
-    func testFourConnections() {
-        let devices = 4
-        executeMeshNetwork(serviceType: "1\(#function)",
-            connectingDevices: devices,
-            expectedMessageCount: messageCount(for: devices))
-    }
-
     func testTwoConnections_sendMessages() {
         let devices = 2
 
@@ -115,14 +108,14 @@ class MeshNetworkTests: XCTestCase {
     }
 
     func testThreeConnectionsOneDisconnects() {
-//        let devices = 3
-//        var expectedMessageCount = messageCount(for: devices)
-//        expectedMessageCount.disconnected = 2
-//
-//        executeMeshNetwork(serviceType: "3\(#function)",
-//            connectingDevices: devices,
-//            disconnectingDevices: 1,
-//            expectedMessageCount: expectedMessageCount)
+        let devices = 3
+        var expectedMessageCount = messageCount(for: devices)
+        expectedMessageCount.disconnected = 4
+
+        executeMeshNetwork(serviceType: "3\(#function)",
+            connectingDevices: devices,
+            disconnectingDevices: 1,
+            expectedMessageCount: expectedMessageCount)
     }
 
     // MARK: - Private
@@ -133,8 +126,6 @@ class MeshNetworkTests: XCTestCase {
                                         sendCustomMessage: Bool = false,
                                         expectedMessageCount: MessageCount) {
         let mockMeshNetworkDelegate = MockMeshNetworkDelegate()
-
-        
 
         if expectedMessageCount.dataNone > 0 {
             mockMeshNetworkDelegate.messageDataNoneExpectation = expectation(description: "data none")
@@ -159,6 +150,8 @@ class MeshNetworkTests: XCTestCase {
         if expectedMessageCount.disconnected > 0 {
             mockMeshNetworkDelegate.messageDisconnectedExpectation = expectation(description: "disconnected")
             mockMeshNetworkDelegate.messageDisconnectedExpectation?.expectedFulfillmentCount = expectedMessageCount.disconnected
+            mockMeshNetworkDelegate.messageDisconnectedExpectation?.assertForOverFulfill = false
+
         }
 
         if expectedMessageCount.autoReconnected > 0 {
@@ -183,10 +176,11 @@ class MeshNetworkTests: XCTestCase {
 
         let devices: [MeshNetwork<MockMessage>] = (0..<connectingDevices)
             .map { (deviceNumber) -> MeshNetwork<MockMessage> in
-            MeshNetwork<MockMessage>(serviceType: serviceType,
-                                     displayName: "Device \(deviceNumber)",
-                                     delegate: mockMeshNetworkDelegate)
-            }
+                MeshNetwork<MockMessage>(serviceType: serviceType,
+                                         displayName: "Device \(deviceNumber)",
+                    delegate: mockMeshNetworkDelegate,
+                    autoReconnect: false)
+        }
 
         devices.forEach { (device) in
             device.start()
@@ -202,17 +196,16 @@ class MeshNetworkTests: XCTestCase {
         }
 
         if disconnectingDevices > 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + (sendCustomMessage ? 4 : 2)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + (sendCustomMessage ? 6 : 4)) {
                 devices
                     .suffix(Int(disconnectingDevices))
                     .forEach{ (device) in
-                        device.stop()
                         device.disconnecd()
                 }
             }
         }
 
-        waitForExpectations(timeout: 10) { (error) in
+        waitForExpectations(timeout: 14) { (error) in
             devices.forEach { (device) in
                 device.stop()
                 device.disconnecd()
