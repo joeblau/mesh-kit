@@ -12,8 +12,12 @@ import MultipeerConnectivity
 public enum MeshOperation {
     case data(Data?)
     case connected
+    case connecting
     case disconnected
+    case autoReconnected
     case invited
+    case foundPeer
+    case lostPeer
 }
 
 public struct MeshMessage {

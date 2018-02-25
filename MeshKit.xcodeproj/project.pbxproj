@@ -34,6 +34,12 @@
 		E6D725DC2041B8DA004D29EB /* MeshBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D725DB2041B8DA004D29EB /* MeshBrowserDelegate.swift */; };
 		E6D725DD2041B8DA004D29EB /* MeshBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D725DB2041B8DA004D29EB /* MeshBrowserDelegate.swift */; };
 		E6D725DE2041B8DA004D29EB /* MeshBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D725DB2041B8DA004D29EB /* MeshBrowserDelegate.swift */; };
+		E6ED84B420435F12003CC059 /* MeshBrowserDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED84B320435F12003CC059 /* MeshBrowserDelegateTests.swift */; };
+		E6ED84B520435F12003CC059 /* MeshBrowserDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED84B320435F12003CC059 /* MeshBrowserDelegateTests.swift */; };
+		E6ED84B620435F12003CC059 /* MeshBrowserDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED84B320435F12003CC059 /* MeshBrowserDelegateTests.swift */; };
+		E6ED84B820436270003CC059 /* MeshAdvertiserDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED84B720436270003CC059 /* MeshAdvertiserDelegateTests.swift */; };
+		E6ED84B920436270003CC059 /* MeshAdvertiserDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED84B720436270003CC059 /* MeshAdvertiserDelegateTests.swift */; };
+		E6ED84BA20436270003CC059 /* MeshAdvertiserDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED84B720436270003CC059 /* MeshAdvertiserDelegateTests.swift */; };
 		E6EE9A902042185A0016AF88 /* MeshNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EE9A8F2042185A0016AF88 /* MeshNetworkTests.swift */; };
 		E6EE9A9220421B690016AF88 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EE9A9120421B690016AF88 /* String+Extensions.swift */; };
 		E6EE9A9320421B690016AF88 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EE9A9120421B690016AF88 /* String+Extensions.swift */; };
@@ -93,6 +99,8 @@
 		E6D725D22041B510004D29EB /* MeshSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshSessionDelegate.swift; sourceTree = "<group>"; };
 		E6D725D72041B89F004D29EB /* MeshAdvertiserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshAdvertiserDelegate.swift; sourceTree = "<group>"; };
 		E6D725DB2041B8DA004D29EB /* MeshBrowserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBrowserDelegate.swift; sourceTree = "<group>"; };
+		E6ED84B320435F12003CC059 /* MeshBrowserDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshBrowserDelegateTests.swift; sourceTree = "<group>"; };
+		E6ED84B720436270003CC059 /* MeshAdvertiserDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshAdvertiserDelegateTests.swift; sourceTree = "<group>"; };
 		E6EE9A8F2042185A0016AF88 /* MeshNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshNetworkTests.swift; sourceTree = "<group>"; };
 		E6EE9A9120421B690016AF88 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E6EE9A9520423CB20016AF88 /* MeshMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshMessage.swift; sourceTree = "<group>"; };
@@ -185,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				E674E84220420E1800BA25EA /* MeshSessionDelegateTests.swift */,
+				E6ED84B320435F12003CC059 /* MeshBrowserDelegateTests.swift */,
+				E6ED84B720436270003CC059 /* MeshAdvertiserDelegateTests.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -482,9 +492,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6ED84B420435F12003CC059 /* MeshBrowserDelegateTests.swift in Sources */,
 				E674E84320420E1800BA25EA /* MeshSessionDelegateTests.swift in Sources */,
 				E674E81420420B0700BA25EA /* MeshDeviceTests.swift in Sources */,
 				E6EE9A9A20424CCA0016AF88 /* MeshMessageTests.swift in Sources */,
+				E6ED84B820436270003CC059 /* MeshAdvertiserDelegateTests.swift in Sources */,
 				E6EE9A902042185A0016AF88 /* MeshNetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,9 +505,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6ED84B520435F12003CC059 /* MeshBrowserDelegateTests.swift in Sources */,
 				E674E84420420E1800BA25EA /* MeshSessionDelegateTests.swift in Sources */,
 				E674E81520420B0700BA25EA /* MeshDeviceTests.swift in Sources */,
 				E6EE9A9B20424CCA0016AF88 /* MeshMessageTests.swift in Sources */,
+				E6ED84B920436270003CC059 /* MeshAdvertiserDelegateTests.swift in Sources */,
 				E6EE9A9D20424E910016AF88 /* MeshNetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,9 +518,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6ED84B620435F12003CC059 /* MeshBrowserDelegateTests.swift in Sources */,
 				E674E84520420E1800BA25EA /* MeshSessionDelegateTests.swift in Sources */,
 				E674E81620420B0700BA25EA /* MeshDeviceTests.swift in Sources */,
 				E6EE9A9C20424CCA0016AF88 /* MeshMessageTests.swift in Sources */,
+				E6ED84BA20436270003CC059 /* MeshAdvertiserDelegateTests.swift in Sources */,
 				E6EE9A9E20424E920016AF88 /* MeshNetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

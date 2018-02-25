@@ -18,7 +18,8 @@ internal class MeshSessionDelegate: NSObject, MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
         case .connected: delegate.update(message: MeshMessage(peerID: peerID, operation: .connected))
-        case .connecting, .notConnected: delegate.update(message: MeshMessage(peerID: peerID, operation: .disconnected))
+        case .connecting: delegate.update(message: MeshMessage(peerID: peerID, operation: .connecting))
+        case .notConnected: delegate.update(message: MeshMessage(peerID: peerID, operation: .disconnected))
         }
     }
 

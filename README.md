@@ -25,4 +25,33 @@ github "joeblau/mesh-kit"
 ```swift
 import MeshKit
 
+struct MockMessage: Codable {
+    var title: String
+    var description: String
+}
+
+class NetworkController: MeshNetworkDelegate {
+    
+    let meshNetwork: MeshNetwork<MockMessage>
+    
+    init() {
+        meshNetwork = MeshNetwork<MockMessage>(serviceType: "service type",
+                                               delegate: mockMeshNetworkDelegate)
+        meshNetwork.start()
+    }
+    
+    // MARK: - MeshNetworkDelegate
+    
+    func update(message: MeshMessage) {
+        // Handle incoming messages
+    }
+}
+
 ```
+
+## Features
+
+- Easy setup
+- Encrypted
+- Unit tested up to 20 devices (This number can probably go higher with real devices)
+- Auto-reconnect
