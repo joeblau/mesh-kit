@@ -11,7 +11,7 @@
   <a href="https://github.com/joeblau/mesh-kit/blob/master/LICENSE"><img src="https://img.shields.io/github/license/joeblau/mesh-kit.svg?style=flat-square"/></a>
 </p>
 
-MeshKit is provides a cross platfrom iOS, tvOS, and macOS mesh networking API
+MeshKit is a cross platform iOS, tvOS, and macOS mesh networking API
 
 ## Installation
 
