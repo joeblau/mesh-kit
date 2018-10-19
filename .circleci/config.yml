@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build-and-test:
+    macos:
+      xcode: "10.2.0"
+    steps:
+      - run:
+          name: Run iOS Tests
+          command: fastlane scan
+          environment:
+            SCAN_DEVICE: iPhone X
+            SCAN_SCHEME: MeshKit-iOS
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build-and-test
