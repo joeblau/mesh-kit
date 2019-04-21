@@ -9,7 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
-fileprivate let RECONNECT_TIMEOUT: TimeInterval = 5
+fileprivate let RECONNECT_TIMEOUT: TimeInterval = 0
 
 public class MeshNetwork<T: Codable>: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate {
     
@@ -28,7 +28,7 @@ public class MeshNetwork<T: Codable>: NSObject, MCSessionDelegate, MCNearbyServi
         
         let peerID = MCPeerID(displayName: displayName)
         self.received = received
-        session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .optional)
+        session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
         nearbyServiceAdvertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType.validated())
         nearbyServiceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: serviceType.validated())
         super.init()

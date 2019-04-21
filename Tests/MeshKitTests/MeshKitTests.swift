@@ -17,44 +17,43 @@ class MeshKitTests: XCTestCase  {
     }
     
     func testConnect_sendMessage_oneToOne() {
-        let expect = expectation(description: "Auto-Connect")
+        let expect = expectation(description: "Auto-Connect-One-One")
         expect.expectedFulfillmentCount = 1
         
         var services = [MeshNetwork<TestObject>]()
-        (1...2).forEach { services.append(createService(with: "Service \($0)", expect: expect)) }
+        (1...2).forEach { services.append(createService(type: "oneToOne", with: "Service \($0)", expect: expect)) }
 
         services.forEach { $0.start() }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             var testInstance = TestObject()
             testInstance.testInterger = 100
             services[0].send(codable: testInstance)
         }
         
-        waitForExpectations(timeout: 5) { (error) in
+        waitForExpectations(timeout: 60) { (error) in
             services.forEach { service in
                 service.disconnect()
                 service.stop()
             }
         }
-
     }
     
     func testConnect_sendMessage_oneToFour() {
-        let expect = expectation(description: "Auto-Connect")
+        let expect = expectation(description: "Auto-Connect-One-Four")
         expect.expectedFulfillmentCount = 3
         
         var services = [MeshNetwork<TestObject>]()
-        (1...4).forEach { services.append(createService(with: "Service \($0)", expect: expect)) }
+        (1...4).forEach { services.append(createService(type: "oneToFour", with: "Service \($0)", expect: expect)) }
         services.forEach { $0.start() }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             var testInstance = TestObject()
             testInstance.testInterger = 100
             services[0].send(codable: testInstance)
         }
         
-        waitForExpectations(timeout: 5) { (error) in
+        waitForExpectations(timeout: 60) { (error) in
             services.forEach { service in
                 service.disconnect()
                 service.stop()
@@ -63,20 +62,20 @@ class MeshKitTests: XCTestCase  {
     }
     
     func testConnect_sendMessage_fourToFour() {
-        let expect = expectation(description: "Auto-Connect")
+        let expect = expectation(description: "Auto-Connect-Four-Four")
         expect.expectedFulfillmentCount = 12
         
         var services = [MeshNetwork<TestObject>]()
-        (1...4).forEach { services.append(createService(with: "Service \($0)", expect: expect)) }
+        (1...4).forEach { services.append(createService(type: "fourToFour", with: "Service \($0)", expect: expect)) }
         services.forEach { $0.start() }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             var testInstance = TestObject()
             testInstance.testInterger = 100
             services.forEach { $0.send(codable: testInstance) }
         }
         
-        waitForExpectations(timeout: 5) { (error) in
+        waitForExpectations(timeout: 60) { (error) in
             services.forEach { service in
                 service.disconnect()
                 service.stop()
@@ -86,23 +85,23 @@ class MeshKitTests: XCTestCase  {
     
     func testConnect_send1000Messages() {
         measure {
-            let expect = expectation(description: "Auto-Connect")
+            let expect = expectation(description: "Auto-Connect-1000")
             expect.expectedFulfillmentCount = 1000
-            
+
             var services = [MeshNetwork<TestObject>]()
-            (1...2).forEach { services.append(createService(with: "Service \($0)", expect: expect)) }
-            
+            (1...2).forEach { services.append(createService(type: "oneThousand", with: "Service \($0)", expect: expect)) }
+
             services.forEach { $0.start() }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 var testInstance = TestObject()
                 (0...999).forEach {
                     testInstance.testInterger = $0
                     services[0].send(codable: testInstance)
                 }
             }
-            
-            waitForExpectations(timeout: 20) { (error) in
+
+            waitForExpectations(timeout: 60) { (error) in
                 services.forEach { service in
                     service.disconnect()
                     service.stop()
@@ -111,8 +110,8 @@ class MeshKitTests: XCTestCase  {
         }
     }
     
-    private func createService(with displayName: String, expect: XCTestExpectation) -> MeshNetwork<TestObject> {
-        return MeshNetwork<TestObject>.init(serviceType: "Test", displayName: displayName) { (peerID, test) in
+    private func createService(type: String, with displayName: String, expect: XCTestExpectation) -> MeshNetwork<TestObject> {
+        return MeshNetwork<TestObject>.init(serviceType: type, displayName: displayName) { (peerID, test) in
             expect.fulfill()
         }
     }

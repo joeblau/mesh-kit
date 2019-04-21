@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='MeshKit-iOS Tests.xctest' tests='4' failures='0'>
-  <testsuite name='MeshKit_iOS_Tests.MeshKitTests' tests='4' failures='0'>
-    <testcase classname='MeshKit_iOS_Tests.MeshKitTests' name='testConnect_send1000Messages' time='24.832'/>
-    <testcase classname='MeshKit_iOS_Tests.MeshKitTests' name='testConnect_sendMessage_fourToFour' time='3.236'/>
-    <testcase classname='MeshKit_iOS_Tests.MeshKitTests' name='testConnect_sendMessage_oneToFour' time='2.822'/>
-    <testcase classname='MeshKit_iOS_Tests.MeshKitTests' name='testConnect_sendMessage_oneToOne' time='2.151'/>
-  </testsuite>
-</testsuites>

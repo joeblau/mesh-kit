@@ -128,13 +128,6 @@ iOSInjectionProject/
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
-### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
-**/xcshareddata/WorkspaceSettings.xcsettings
-
+test_output/
 
 # End of https://www.gitignore.io/api/swift,cocoapods,xcode,macos
