@@ -16,7 +16,7 @@ class MeshKitTests: XCTestCase  {
         var testInterger = 0
     }
     
-    func testConnect_sendMessage_oneToOne() {
+    func _testConnect_sendMessage_oneToOne() {
         let expect = expectation(description: "Auto-Connect-One-One")
         expect.expectedFulfillmentCount = 1
         
@@ -39,7 +39,7 @@ class MeshKitTests: XCTestCase  {
         }
     }
     
-    func testConnect_sendMessage_oneToFour() {
+    func _testConnect_sendMessage_oneToFour() {
         let expect = expectation(description: "Auto-Connect-One-Four")
         expect.expectedFulfillmentCount = 3
         
@@ -61,7 +61,7 @@ class MeshKitTests: XCTestCase  {
         }
     }
     
-    func testConnect_sendMessage_fourToFour() {
+    func _testConnect_sendMessage_fourToFour() {
         let expect = expectation(description: "Auto-Connect-Four-Four")
         expect.expectedFulfillmentCount = 12
         
@@ -83,7 +83,7 @@ class MeshKitTests: XCTestCase  {
         }
     }
     
-    func testConnect_send1000Messages() {
+    func _testConnect_send1000Messages() {
         measure {
             let expect = expectation(description: "Auto-Connect-1000")
             expect.expectedFulfillmentCount = 1000
@@ -116,10 +116,10 @@ class MeshKitTests: XCTestCase  {
         }
     }
     
-    static var allTests = [
-        ("testConnect_sendMessage_oneToOne", testConnect_sendMessage_oneToOne),
-        ("testConnect_sendMessage_oneToFour", testConnect_sendMessage_oneToFour),
-        ("testConnect_sendMessage_fourToFour", testConnect_sendMessage_fourToFour),
-        ("testConnect_send1000Messages", testConnect_send1000Messages)
-    ]
+//    static var allTests = [
+//        ("testConnect_sendMessage_oneToOne", testConnect_sendMessage_oneToOne),
+//        ("testConnect_sendMessage_oneToFour", testConnect_sendMessage_oneToFour),
+//        ("testConnect_sendMessage_fourToFour", testConnect_sendMessage_fourToFour),
+//        ("testConnect_send1000Messages", testConnect_send1000Messages)
+//    ]
 }
